@@ -341,7 +341,7 @@ End of functions from https://github.com/client9/shlib
 EOF
 
 PROJECT_NAME="akash"
-OWNER=ovrclk
+OWNER=ourlink
 REPO="akash"
 BINARY=akashctl
 FORMAT=zip
