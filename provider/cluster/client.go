@@ -161,20 +161,5 @@ func (c *nullClient) Inventory(ctx context.Context) ([]Node, error) {
 			Memory:  nullClientMemory,
 			Storage: nullClientStorage,
 		}),
-		NewNode("a", atypes.Unit{
-			CPU:     nullClientCPU,
-			Memory:  nullClientMemory,
-			Storage: nullClientStorage,
-		}),
-		NewNode("b", atypes.Unit{
-			CPU:     nullClientCPU,
-			Memory:  nullClientMemory,
-			Storage: nullClientStorage,
-		}),
-		NewNode("c", atypes.Unit{
-			CPU:     nullClientCPU,
-			Memory:  nullClientMemory,
-			Storage: nullClientStorage,
-		}),
 	}, nil
 }
