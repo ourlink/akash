@@ -75,9 +75,13 @@ type ServiceLog struct {
 
 const (
 	// 5 CPUs, 5Gi memory for null client.
-	nullClientCPU     = 5000
-	nullClientMemory  = 32 * unit.Gi
-	nullClientStorage = 512 * unit.Gi
+//	nullClientCPU     = 5000
+//	nullClientMemory  = 32 * unit.Gi
+//	nullClientStorage = 512 * unit.Gi
+	// 5 CPUs, 5Gi memory for null client.
+	nullClientCPU     = 5000 * 2
+	nullClientMemory  = 32 * 2 * unit.Gi
+	nullClientStorage = 512 * 2 * unit.Gi
 )
 
 type nullClient struct {
@@ -153,6 +157,21 @@ func (c *nullClient) Deployments(ctx context.Context) ([]Deployment, error) {
 func (c *nullClient) Inventory(ctx context.Context) ([]Node, error) {
 	return []Node{
 		NewNode("solo", atypes.Unit{
+			CPU:     nullClientCPU,
+			Memory:  nullClientMemory,
+			Storage: nullClientStorage,
+		}),
+		NewNode("a", atypes.Unit{
+			CPU:     nullClientCPU,
+			Memory:  nullClientMemory,
+			Storage: nullClientStorage,
+		}),
+		NewNode("b", atypes.Unit{
+			CPU:     nullClientCPU,
+			Memory:  nullClientMemory,
+			Storage: nullClientStorage,
+		}),
+		NewNode("c", atypes.Unit{
 			CPU:     nullClientCPU,
 			Memory:  nullClientMemory,
 			Storage: nullClientStorage,

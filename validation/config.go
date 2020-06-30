@@ -9,10 +9,10 @@ type ValConfig struct {
 	MaxUnitCPU     uint `env:"AKASH_MAX_UNIT_CPU"     envDefault:"500"`
 	MaxUnitMemory  uint `env:"AKASH_MAX_UNIT_MEMORY"  envDefault:"1073741824"` // 1Gi
 	MaxUnitStorage uint `env:"AKASH_MAX_UNIT_STORAGE" envDefault:"1073741824"` // 1Gi
-	MaxUnitCount   uint `env:"AKASH_MAX_UNIT_COUNT"   envDefault:"10"`
+	MaxUnitCount   uint `env:"AKASH_MAX_UNIT_COUNT"   envDefault:"100"`
 	MaxUnitPrice   uint `env:"AKASH_MAX_UNIT_PRICE"   envDefault:"10000"`
 
-	MinUnitCPU     uint `env:"AKASH_MIN_UNIT_CPU"      envDefault:"10"`
+	MinUnitCPU     uint `env:"AKASH_MIN_UNIT_CPU"      envDefault:"1"`
 	MinUnitMemory  uint `env:"AKASH_MIN_UNIT_MEMORY"   envDefault:"1024"` // 1Mi
 	MinUnitStorage uint `env:"AKASH_MIN_UNIT_STORAGE"  envDefault:"1024"` // 1Mi
 	MinUnitCount   uint `env:"AKASH_MIN_UNIT_COUNT"    envDefault:"1"`
@@ -25,7 +25,7 @@ type ValConfig struct {
 	MaxGroupMemory  int64 `env:"AKASH_MAX_GROUP_MEMORY"    envDefault:"1073741824"` // 1Gi
 	MaxGroupStorage int64 `env:"AKASH_MAX_GROUP_STORAGE"   envDefault:"5368709120"` // 5Gi
 
-	MinGroupMemPrice int64 `env:"AKASH_MEM_PRICE_MIN" envDefault:"50"`
+	MinGroupMemPrice int64 `env:"AKASH_MEM_PRICE_MIN" envDefault:"1"`
 	MaxGroupMemPrice int64 `env:"AKASH_MEM_PRICE_MAX" envDefault:"1048576"`
 }
 
