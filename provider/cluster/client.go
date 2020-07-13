@@ -79,9 +79,9 @@ const (
 //	nullClientMemory  = 32 * unit.Gi
 //	nullClientStorage = 512 * unit.Gi
 	// 5 CPUs, 5Gi memory for null client.
-	nullClientCPU     = 5000 * 2
-	nullClientMemory  = 32 * 2 * unit.Gi
-	nullClientStorage = 512 * 2 * unit.Gi
+	nullClientCPU     = 5000 * 10
+	nullClientMemory  = 32 * 10 * unit.Gi
+	nullClientStorage = 512 * 10 * unit.Gi
 )
 
 type nullClient struct {
