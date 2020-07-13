@@ -99,7 +99,7 @@ loop:
 
 				// different group
 				if !o.order.GroupID().Equals(ev.ID.GroupID()) {
-					o.log.Debug("ignoring group", "group", ev.ID.GroupID())
+				//	o.log.Debug("ignoring group", "group", ev.ID.GroupID())
 					break
 				}
 
