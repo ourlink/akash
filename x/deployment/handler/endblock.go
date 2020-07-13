@@ -6,36 +6,18 @@ import (
 	"github.com/ovrclk/akash/x/deployment/types"
 )
 
-// OnEndBlock create order and update order state for each deployment
+// OnEndBlock create order and update order state for each open Group.
 // Executed at the end of block
 func OnEndBlock(ctx sdk.Context, keeper keeper.Keeper, mkeeper MarketKeeper) {
-
-	// create orders as necessary
-	keeper.WithDeployments(ctx, func(d types.Deployment) bool {
-
-		// active deployments only
-		if d.State != types.DeploymentActive {
-			return false
+	// For each open group; create an order and update the Group's state.
+	keeper.WithOpenGroups(ctx, func(group types.Group) bool {
+		// create order.
+		if _, err := mkeeper.CreateOrder(ctx, group.ID(), group.GroupSpec); err != nil {
+			ctx.Logger().With("group", group.ID(), "error", err).Error("creating order")
 		}
 
-		for _, group := range keeper.GetGroups(ctx, d.ID()) {
-
-			// open groups only
-			if err := group.ValidateOrderable(); err != nil {
-				continue
-			}
-
-			// create order.
-			if _, err := mkeeper.CreateOrder(ctx, group.ID(), group.GroupSpec); err != nil {
-				ctx.Logger().With("group", group.ID(), "error", err).Error("creating order")
-				continue
-			}
-
-			// set state to ordered
-			keeper.OnOrderCreated(ctx, group)
-		}
-
+		// set state to ordered
+		keeper.OnOrderCreated(ctx, group)
 		return false
 	})
-
 }
